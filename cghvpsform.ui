@@ -11,10 +11,22 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>918</width>
+    <height>546</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>918</width>
+    <height>546</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -53,7 +65,7 @@
             <property name="title">
              <string>Status</string>
             </property>
-            <layout class="QFormLayout" name="formLayout">
+            <layout class="QGridLayout" name="gridLayout_2" columnstretch="10,0">
              <item row="0" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
@@ -125,41 +137,6 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="text">
-                <string>DEBUG</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_5">
-               <property name="text">
-                <string>No Power</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_6">
-               <property name="text">
-                <string>External interlock</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_7">
-               <property name="text">
-                <string>Internal interlock</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_8">
-               <property name="text">
-                <string>Rectifier not ready</string>
-               </property>
-              </widget>
-             </item>
              <item row="2" column="1">
               <widget class="LEDindicator" name="ZU_LED_S2" native="true">
                <property name="sizePolicy">
@@ -182,6 +159,13 @@
                </property>
                <property name="styleSheet">
                 <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>DEBUG</string>
                </property>
               </widget>
              </item>
@@ -210,6 +194,13 @@
                </property>
               </widget>
              </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>No Power</string>
+               </property>
+              </widget>
+             </item>
              <item row="4" column="1">
               <widget class="LEDindicator" name="ZU_LED_S4" native="true">
                <property name="sizePolicy">
@@ -232,6 +223,13 @@
                </property>
                <property name="styleSheet">
                 <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>External interlock</string>
                </property>
               </widget>
              </item>
@@ -260,6 +258,13 @@
                </property>
               </widget>
              </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Internal interlock</string>
+               </property>
+              </widget>
+             </item>
              <item row="6" column="1">
               <widget class="LEDindicator" name="ZU_LED_S6" native="true">
                <property name="sizePolicy">
@@ -282,6 +287,13 @@
                </property>
                <property name="styleSheet">
                 <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>Rectifier not ready</string>
                </property>
               </widget>
              </item>
@@ -323,7 +335,11 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="E_serial"/>
+             <widget class="QLineEdit" name="E_serial">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_24">
@@ -333,7 +349,11 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="E_ADC"/>
+             <widget class="QLineEdit" name="E_ADC">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_23">
@@ -414,7 +434,11 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="E_Vcutoff"/>
+             <widget class="QLineEdit" name="E_Vcutoff">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_27">
@@ -817,7 +841,7 @@
              </property>
             </widget>
            </item>
-           <item row="12" column="0" colspan="2">
+           <item row="13" column="0" colspan="2">
             <widget class="QPushButton" name="B_reset">
              <property name="minimumSize">
               <size>
@@ -830,6 +854,19 @@
              </property>
             </widget>
            </item>
+           <item row="12" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </widget>
         </item>
@@ -837,220 +874,6 @@
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_21">
-          <property name="text">
-           <string>Ouput voltage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="E_Vout">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>130</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>130</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>100</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>FreeMono</family>
-            <pointsize>20</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-            <strikeout>false</strikeout>
-            <stylestrategy>PreferAntialias</stylestrategy>
-            <kerning>false</kerning>
-           </font>
-          </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
-          </property>
-          <property name="whatsThis">
-           <string/>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">:enabled {
-color: rgb(115, 210, 22);
-background-color: rgb(0, 0, 0);
-border-radius: 5px;
-border-width: 2px;
-border-color: gray;
-border-style:solid;
-}
-
-:disabled {
-color: black;
-background-color: rgb(0, 0, 0);
-border-radius: 5px;
-border-width: 2px;
-border-color: gray;
-border-style:solid;
-}</string>
-          </property>
-          <property name="text">
-           <string>10000 V</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QSpinBox" name="I_Vset">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>FreeMono</family>
-            <pointsize>20</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">/*QSpinBox {
-background-color: rgb(173, 127, 168);
-margin-right: 20px;
-border: solid black 3px;
-}
-
-QSpinBox::up-button {
-subcontrol-origin: margin;
-subcontrol-position: right;
-right: 0px;
-background-color: gray;
-};*/
-
-QSpinBox { 
-border: 2px solid gray;
-border-radius: 5px; 
-background-color: black;
-color: rgb(0, 255, 255);
-margin-right: 35px;
-padding-right: -25px
-/*margin-left: 20 px;*/
- }
-
-QSpinBox::up-button { 
-subcontrol-origin: margin;
-subcontrol-position: top right;
-/*margin: 0px;*/
-margin-bottom:1px;
-background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, 
-stop:0 rgb(200, 200, 200), stop:1 rgb(255, 255, 255));
-border: 1px solid gray;
-border-radius: 3px;
-width: 30px;
- }
-QSpinBox::up-button:hover {
-}
-QSpinBox::up-arrow { 
-border-left:6px solid none;
-border-right: 6px solid none; 
-border-bottom: 10px solid rgb(85, 87, 83); 
-width: 0px; height: 0px;
-}
-QSpinBox::up-arrow:hover { 
-border-left:6px solid none;
-border-right: 6px solid none; 
-border-bottom: 10px solid rgb(85, 87, 83); 
-width: 0px; height: 0px;
-}
-
-
-QSpinBox::down-button { 
-subcontrol-origin: margin;
-subcontrol-position: bottom right;
-background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, 
-stop:0 rgb(200, 200, 200), stop:1 rgb(255, 255, 255));
-border: 1px solid gray;
-border-radius: 3px;
-width: 30px;
-margin-top:1px;
- }
-QSpinBox::down-button:hover {
-}
-QSpinBox::down-arrow { 
-border-left:6px solid none;
-border-right: 6px solid none; 
-border-top: 10px solid rgb(85, 87, 83); 
-width: 0px; height: 0px;
-}
-QSpinBox::down-arrow:hover { 
-border-left:6px solid none;
-border-right: 6px solid none; 
-border-top: 10px solid rgb(85, 87, 83); 
-width: 0px; height: 0px;
-}
-
-
-</string>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::UpDownArrows</enum>
-          </property>
-          <property name="suffix">
-           <string> V</string>
-          </property>
-          <property name="minimum">
-           <number>500</number>
-          </property>
-          <property name="maximum">
-           <number>7500</number>
-          </property>
-          <property name="value">
-           <number>7499</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_26">
-          <property name="text">
-           <string>Ouput current</string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="E_Iout">
           <property name="enabled">
@@ -1064,7 +887,7 @@ width: 0px; height: 0px;
           </property>
           <property name="minimumSize">
            <size>
-            <width>130</width>
+            <width>140</width>
             <height>34</height>
            </size>
           </property>
@@ -1127,8 +950,185 @@ border-style:solid;
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="dispCyan">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>140</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>100</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>FreeMono</family>
+            <pointsize>20</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+            <stylestrategy>PreferAntialias</stylestrategy>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">:enabled {
+color: rgb(0, 255, 255);
+background-color: rgb(0, 0, 0);
+border-radius: 5px;
+border-width: 2px;
+border-color: gray;
+border-style:solid;
+}
+
+:disabled {
+color: black;
+background-color: rgb(0, 0, 0);
+border-radius: 5px;
+border-width: 2px;
+border-color: gray;
+border-style:solid;
+}</string>
+          </property>
+          <property name="text">
+           <string>7500 V</string>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="E_Vout">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>140</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>130</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>100</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>FreeMono</family>
+            <pointsize>20</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+            <strikeout>false</strikeout>
+            <stylestrategy>PreferAntialias</stylestrategy>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">:enabled {
+color: rgb(115, 210, 22);
+background-color: rgb(0, 0, 0);
+border-radius: 5px;
+border-width: 2px;
+border-color: gray;
+border-style:solid;
+}
+
+:disabled {
+color: black;
+background-color: rgb(0, 0, 0);
+border-radius: 5px;
+border-width: 2px;
+border-color: gray;
+border-style:solid;
+}</string>
+          </property>
+          <property name="text">
+           <string>10000 V</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Set</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QPushButton" name="B_startCharge">
             <property name="sizePolicy">
@@ -1151,31 +1151,6 @@ border-style:solid;
             </property>
             <property name="text">
              <string>On</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="B_stopCharge">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>50</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>50</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Off</string>
             </property>
            </widget>
           </item>
@@ -1204,7 +1179,45 @@ border-style:solid;
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="B_stopCharge">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Off</string>
+            </property>
+           </widget>
+          </item>
          </layout>
+        </item>
+        <item row="0" column="2">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -1232,199 +1245,7 @@ border-style:solid;
             <property name="title">
              <string>Status</string>
             </property>
-            <layout class="QFormLayout" name="formLayout_4">
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_28">
-               <property name="text">
-                <string>Demagnetization</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S0_2" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_29">
-               <property name="text">
-                <string>HV switch ready</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S1_2" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_30">
-               <property name="text">
-                <string>Ready for ON</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_31">
-               <property name="text">
-                <string>Contactor is on</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_32">
-               <property name="text">
-                <string>Charging unit ready</string>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="0">
-              <widget class="QLabel" name="label_35">
-               <property name="text">
-                <string>HW switch enabled</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S2_2" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S3_2" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S4_2" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S7_4" native="true">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="baseSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border: 1 solid black	</string>
-               </property>
-              </widget>
-             </item>
+            <layout class="QGridLayout" name="gridLayout_3">
              <item row="0" column="0">
               <widget class="QLabel" name="label_34">
                <property name="text">
@@ -1433,7 +1254,7 @@ border-style:solid;
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S6_2" native="true">
+              <widget class="LEDindicator" name="CU_LED_S0" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1465,7 +1286,167 @@ border-style:solid;
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S5_2" native="true">
+              <widget class="LEDindicator" name="CU_LED_S1" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>Demagnetization</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="LEDindicator" name="CU_LED_S2" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_29">
+               <property name="text">
+                <string>HV switch ready</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="LEDindicator" name="CU_LED_S3" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_30">
+               <property name="text">
+                <string>Ready for ON</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="LEDindicator" name="CU_LED_S4" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_31">
+               <property name="text">
+                <string>Contactor is on</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="LEDindicator" name="CU_LED_S5" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_32">
+               <property name="text">
+                <string>Charging unit ready</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="LEDindicator" name="CU_LED_S6" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1497,7 +1478,7 @@ border-style:solid;
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S4_3" native="true">
+              <widget class="LEDindicator" name="CU_LED_S7" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1529,7 +1510,39 @@ border-style:solid;
               </widget>
              </item>
              <item row="8" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S4_4" native="true">
+              <widget class="LEDindicator" name="CU_LED_S8" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="baseSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 1 solid black	</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="label_35">
+               <property name="text">
+                <string>HW switch enabled</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="LEDindicator" name="CU_LED_S9" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1561,7 +1574,7 @@ border-style:solid;
               </widget>
              </item>
              <item row="10" column="1">
-              <widget class="LEDindicator" name="ZU_LED_S7_7" native="true">
+              <widget class="LEDindicator" name="CU_LED_S10" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1595,7 +1608,7 @@ border-style:solid;
           <property name="title">
            <string>Error</string>
           </property>
-          <layout class="QFormLayout" name="formLayout_6">
+          <layout class="QGridLayout" name="gridLayout_4">
            <item row="0" column="0">
             <widget class="QLabel" name="label_41">
              <property name="text">
@@ -1604,7 +1617,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E0_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E0" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1636,7 +1649,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E1_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E1" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1668,7 +1681,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E2_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E2" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1700,7 +1713,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E3_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E3" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1732,7 +1745,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E4_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E4" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1764,7 +1777,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E5_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E5" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1796,7 +1809,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E6_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E6" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1828,7 +1841,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E7_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E7" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1860,7 +1873,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="8" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E8_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E8" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1892,7 +1905,7 @@ border-style:solid;
             </widget>
            </item>
            <item row="9" column="1">
-            <widget class="LEDindicator" name="ZU_LED_E9_2" native="true">
+            <widget class="LEDindicator" name="CU_LED_E9" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>

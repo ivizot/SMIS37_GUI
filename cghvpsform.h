@@ -25,8 +25,9 @@ private:
 
 signals:
     void sendCommand(quint8 C, quint16 arg);
+    void requestDialog();
 private slots:
-    void on_spinBox_editingFinished();
+    void on_pushButton_clicked();
 };
 
 #endif // CGHVPSFORM_H

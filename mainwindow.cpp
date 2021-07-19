@@ -465,7 +465,6 @@ void MainWindow::plotPulses_mouseDoubleClick(QMouseEvent * event)
 
 void MainWindow::on_B_GSPSsetCurrent_clicked()
 {
-
     showInputDialog(COMM_GSPS_SET_I);
 }
 
