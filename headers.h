@@ -23,7 +23,7 @@ typedef struct __attribute__((packed))
 //#define _MAXT_INPUT 3000  // maximum allowed input temp
 
 //temperature sensors index
-#define T_GCOLLECTOR 0 // gyrotron collector [0x28,0x9c,0x7d,0xbe,0x1e,0x19,0x01,0x69]
+#define T_GCOLLECTOR 0  // gyrotron collector [0x28,0x9c,0x7d,0xbe,0x1e,0x19,0x01,0x69]
 #define T_GCAVITY 1     // gyrotron cavity [0x28,0xef,0x5a,0xe0,0x20,0x19,0x01,0xe6]
 #define T_COIL1 2       // Coil 1 [0x28,0x2f,0x50,0xe1,0x20,0x19,0x01,0x4b]
 #define T_COIL2 3       // Coil 2 [0x28,0x77,0xb4,0x5b,0x1c,0x19,0x01,0xee]
@@ -67,7 +67,7 @@ typedef struct __attribute__((packed))
 
     bool TIMER;  // timer state
     uint16_t dT; //time to next pulse, ms
-} TPulseGen; //42 bytes
+} TPulseGen;     //42 bytes
 // ************************************* /Pulse generator data
 
 // ************************************* GSPS data
@@ -106,7 +106,7 @@ typedef struct __attribute__((packed))
     uint16_t A;    // I zero offset; 512
     uint16_t B;    // calibration, mV/A;
     int16_t C;     // zero offset in Irms; 1000 = 1 A;
-} TGFPS; // 17 bytes
+} TGFPS;           // 17 bytes
 // ************************************* /GFPS data
 
 // GHVPS data
@@ -200,6 +200,39 @@ typedef struct __attribute__((packed))
     uint8_t S;
 } TGIP; // 6 bytes
 
+//Gas Valve data
+//#define GIP_KU 10.2914 // V/ADC; 3 kV = 281 ADC; 4 kV = 392 ADC; 4.4 kV = 427; 2.4 kV = 240 ADC; U[V] = ADC*KU; max ~5000
+//#define GIP_KI 4.8828  // uA/ADC  1024 ADC = 5V = 5mA; I[uA] = ADC*KI; max 5000
+typedef struct __attribute__((packed))
+{
+    // battery voltage, V*10
+    uint16_t Batt;
+    // HV Voltage, V
+    uint16_t HV;
+    // HV Voltage setpoint, V
+    uint16_t HVset;
+    // current pulse duration: 0 = AUTO; 1 = Trigger duration, D>=2 - duration, [us]
+    uint16_t D;
+
+    uint16_t M;    // current motor position
+    uint16_t Mset; // setpoint motor position
+    uint16_t Mmax; // max motor position
+
+    // status byte
+    // 0 online (set by host)
+    // 1 HV on/off
+    // 2 HV ready
+    // 3 HV clock switch failure
+    // 4 HV pulse switch failure
+    // 5 motor on/off
+    // 6 motor in position
+    // 7 motor driver failure
+    // 8 low batt - operational
+    // 9 low batt - not operational
+    // 10 sleep mode
+    uint16_t S;
+} TGASVALVE;
+
 //SPELLMAN data
 typedef struct __attribute__((packed))
 {
@@ -270,9 +303,9 @@ typedef struct __attribute__((packed))
     // NOT USING: byte request_slave_faults_9 = 0;
 
     uint8_t request_local_remote_mode;
-    char error_code_char;     // ???
+    char error_code_char;       // ???
     uint8_t error_command_byte; // заголовочный байт команды, которая привела к ошибке
-} TSPELLMAN; //39 bytes
+} TSPELLMAN;                    //39 bytes
 
 // interlock OUTPUT bits in PORTC
 #define IBO_SPELLMAN 5
@@ -322,21 +355,22 @@ typedef struct __attribute__((packed))
 
 typedef struct __attribute__((packed))
 {
-    TWater waterData; //57
+    TWater waterData;       //57
     TPulseGen pulseGenData; //42
-    TGSPS GSPSData; //9
-    TGIP GIPData; //6
-    TGFPS GFPSData; //17
+    TGSPS GSPSData;         //9
+    TGIP GIPData;           //6
+    TGFPS GFPSData;         //17
+    TGASVALVE GASData;
 
     TGHVPS GHVPSData; //31
 
     TSPELLMAN spellmanData; // 39
 
-    uint8_t GUlast; //average gyrotron voltage in last pulse
+    uint8_t GUlast;    //average gyrotron voltage in last pulse
     uint8_t GUdesired; // desired gyrotron voltage
-    uint8_t GIlast; // average gyrotron current in last pulse
+    uint8_t GIlast;    // average gyrotron current in last pulse
     uint8_t GIdesired; // desired gyrotron current
-    uint8_t MIlast; // average coils current in last pulse
+    uint8_t MIlast;    // average coils current in last pulse
 
     uint8_t interlocksIn;        // input states; 1 = OPEN; 0 = CLOSED
     uint8_t latchedInterlocksIn; // bit is released (set to 0) only by reset command
@@ -353,9 +387,9 @@ typedef struct __attribute__((packed))
 
 #define FAST_ADC_COUNT 100 // number of samples for fast ADC
 #define FAST_ADC_TPP 23.25 // time per point, us
-#define GI_PER_ADC 1; // Amp per ADC
-#define GU_PER_ADC 1; // kV per ADC
-#define MI_PER_ADC 1; // KAmp per ADC
+#define GI_PER_ADC 1;      // Amp per ADC
+#define GU_PER_ADC 1;      // kV per ADC
+#define MI_PER_ADC 1;      // KAmp per ADC
 typedef struct __attribute__((packed))
 {
     uint8_t GI[FAST_ADC_COUNT];
@@ -450,6 +484,19 @@ typedef struct __attribute__((packed))
 #define COMM_GHVPS_RESET_ZU 88  // 0-1 Error reset
 #define COMM_GHVPS_2 89
 // === /GHVPS
+
+// === GASVALVE
+#define COMM_GASVALVE_1 90
+#define COMM_GASVALVE_QUERY 90  // QUERY data, internal/telnet use only
+#define COMM_GASVALVE_SET_HV 91 // HV module on/off
+#define COMM_GASVALVE_SET_U 92  // Output voltage setpoint, V*10
+#define COMM_GASVALVE_SET_D 93  // current pulse duration: 0 = AUTO; 1 = Trigger duration, D>=2 - duration, [us]
+#define COMM_GASVALVE_SET_M 93  // motor module on/off
+#define COMM_GASVALVE_SET_MP 94 // set motor position
+#define COMM_GASVALVE_HOME_M 95 // home motor
+#define COMM_GASVALVE_PULSE 96  // pulse valve
+#define COMM_GASVALVE_2 99
+// === /GASVALVE
 
 // === INTERLOCKS
 #define COMM_INTERLOCKS_QUERY 100      // query interlocks status - telnet
